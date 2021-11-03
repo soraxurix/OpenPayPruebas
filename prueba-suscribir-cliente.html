@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Prueba suscripción</title>
+	<link rel="stylesheet" href="">
+
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	
+</head>
+<body>
+	<p><strong>Paso 1: Seleccionar los datos (Sólo los que estén registrados en OpenPay).</strong></p>
+	<p id="cliente_titulo"><strong>Cliente:</strong> No hay ningún cliente seleccionado</p>
+	<p id="plan_titulo"><strong>Plan:</strong> No hay ningún plan seleccionado</p>
+	<p id="tarjeta_titulo"><strong>Tarjeta:</strong> No hay ningún tarjeta seleccionado</p>
+
+	<a href="#" id="button-agregarPlan" class="btn btn-primary">Seleccionar plan</a>
+	<a href="#" id="button-agregarCliente" class="btn btn-primary">Seleccionar cliente</a>
+	<a href="#" id="button-agregarTarjeta" class="btn btn-primary">Seleccionar tarjeta</a>
+	<hr>
+	<p><a href="#" id="button-suscribirCliente" class="btn btn-success">Suscribir cliente</a></p>
+
+	 <!-- Modal Cliente -->
+	 <div id="modalSeleccionarCliente" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Seleccionar cliente</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	      	<select id="select-cliente" style="max-width:90%;">
+	      		<option value="seleccionar" selected="">Seleccionar cliente</option>
+	      	</select>
+	      	 <!-- d-none -->
+	      	<table class="table d-none" id="tabla-cliente">
+			  <thead>
+			    <tr>
+			      <th scope="col">ID</th>
+			      <th scope="col">Nombre</th>
+			      <th scope="col">Email</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr id="informacion-cliente">
+			    </tr>
+			  </tbody>
+			</table>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+	        <button class="btn btn-primary" id="button-cliente-seleccionado">Seleccionar</button>	        
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+
+	<!-- Modal Plan -->
+	 <div id="modalSeleccionarPlan" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Seleccionar plan</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	      	<select id="select-plan" style="max-width:90%;">
+	      		<option value="seleccionar" selected="">Seleccionar plan</option>
+	      	</select>
+	      	 <!-- d-none -->
+	      	<table class="table d-none" id="tabla-plan">
+			  <thead>
+			    <tr>
+			      <th scope="col">ID</th>
+			      <th scope="col">Nombre</th>
+			      <th scope="col">Precio</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr id="informacion-plan">
+			    </tr>
+			  </tbody>
+			</table>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+	        <button class="btn btn-primary" id="button-plan-seleccionado">Seleccionar</button>	        
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<!-- Modal Tarjetas -->
+	 <div id="modalSeleccionarTarjeta" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Seleccionar tarjeta</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	      	<select id="select-tarjeta" style="max-width:90%;">
+	      		<option value="seleccionar" selected="">Seleccionar tarjeta</option>
+	      	</select>
+	      	 <!-- d-none -->
+	      	<table class="table d-none" id="tabla-tarjeta">
+			  <thead>
+			    <tr>
+			      <th scope="col">ID</th>
+			      <th scope="col">Número</th>
+			      <th scope="col">Nombre</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr id="informacion-tarjeta">
+			    </tr>
+			  </tbody>
+			</table>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+	        <button class="btn btn-primary" id="button-tarjeta-seleccionado">Seleccionar</button>	        
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+
+	<script type="text/javascript" src="js/script-suscribir.js"></script>
+</body>
+</html>

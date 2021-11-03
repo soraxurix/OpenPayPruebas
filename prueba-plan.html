@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Agregar Plan</title>
+	<link rel="stylesheet" href="">
+	<!-- OpenPay -->
+	<script type="text/javascript" src="https://resources.openpay.mx/lib/openpay-js/1.2.38/openpay.v1.min.js"></script>
+	<script type="text/javascript" src="https://openpay.s3.amazonaws.com/openpay.v1.min.js"></script>
+	<script type='text/javascript' src="https://openpay.s3.amazonaws.com/openpay-data.v1.min.js"></script>
+</head>
+<body>
+	<p>Nombre del plan: <input type="text" id="input-nombre"></p>
+	<p>Precio: <input type="number" id="input-precio"></p>
+	<p>Número de intentos de cobro: <input type="number" id="input-intentos">
+	<p>
+		Estatus del plan al terminar los intentos de cobro: 
+		<select id="input-terminar">
+			<option value="unpaid ">Sin pagar</option>
+			<option value="cancelled" selected>Cancelado</option>
+		</select>
+	</p>
+	<p>
+		Cobrar por: 
+		<select id="input-repeticion-unidad">
+			<option value="week">Semana</option>
+			<option value="month" selected>Mes</option>
+			<option value="year">Años</option>
+		</select>
+		Cada: <input type="text" id="input-repeticion-cada" value="1">
+	</p>	
+	<p>Días de prueba:<input type="number" id="input-dias_pruebas"></p>
+	<p>
+		Moneda a usar:
+		<select name="" id="input-moneda">
+			<option value="MXN" selected=>MXN</option>
+		</select>
+	</p>
+	<input type="button" id="button-agregar-pan" value="Agregar Plan">
+	<!-- <form>
+		<p>Nombre Plan:</p><input type="text" id="input-nombre">
+		<p>Precio:</p><input type="number" id="input-precio">
+		<p>Número de intentos de cobro:</p><input type="number" id="input-intentos">
+		<p>Estatus del plan al terminar los intentos de cobro:</p>
+		<select id="input-terminar">
+			<option value="unpaid ">Sin pagar</option>
+			<option value="cancelled" selected>Cancelado</option>
+		</select>
+
+		<p>Cobrar por:</p>
+		<select id="input-repeticion-unidad">
+			<option value="week">Semana</option>
+			<option value="month" selected>Mes</option>
+			<option value="year">Años</option>
+		</select>
+		Cobrar cada: <input type="text" id="input-repeticion-cada" value="1">
+		<p>Días de prueba:</p><input type="number" id="input-dias_pruebas">
+		
+		<p>Moneda usada:</p>
+		<select name="" id="input-moneda">
+			<option value="MXN" selected=>MXN</option>
+			<option value="ARG">ARG</option>
+		</select>
+		<hr>
+		<input type="button" id="button-agregar-pan" value="Agregar Plan">
+	</form> -->
+	<script type="text/javascript" src="js/script-plan.js"></script>
+</body>
+</html>

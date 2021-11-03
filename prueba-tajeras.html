@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Prueba tarjetas</title>
+	<link rel="stylesheet" href="">
+	<!-- OpenPay -->
+	<script type="text/javascript" src="https://resources.openpay.mx/lib/openpay-js/1.2.38/openpay.v1.min.js"></script>
+	<script type="text/javascript" src="https://openpay.s3.amazonaws.com/openpay.v1.min.js"></script>
+	<script type='text/javascript' src="https://openpay.s3.amazonaws.com/openpay-data.v1.min.js"></script>
+
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	
+</head>
+<body>
+	<p><strong>Paso 1: Seleccionar el cliente al cual se le agregará la tarjeta (Sólo los clientes registrados en OpenPay).</strong></p>
+	<p id="cliente_titulo"><strong>Cliente:</strong> No hay ningún cliente seleccionado</p>
+	<a href="#" id="button-agregarCliente" class="btn btn-primary">Seleccionar cliente</a>
+
+	<form id="processCard" name="processCard" class="d-none">
+		<p><strong>Paso 2: Añadir los datos de la tarjeta.</strong></p>	 
+		<p>Nombre del propietario: <input data-openpay-card="holder_name" size="20" type="text"></p>
+		<p>Número de la tarjeta: <input data-openpay-card="card_number" size="20" type="text"></p>
+		<p>
+			Año: <input data-openpay-card="expiration_year" size="4" type="text"> 
+			Mes:<input data-openpay-card="expiration_month" size="4" type="text">
+		</p>
+		<p>cvv2: <input data-openpay-card="cvv2" size="5" type="text"></p>
+		<input id="makeRequestCard" type="button" value="Agregar tarjeta" class="btn btn-primary">
+	</form>
+
+	 <!-- Modal -->
+	 <div id="modalSeleccionarCliente" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Seleccionar cliente</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	      	<select id="Usuario" style="max-width:90%;">
+	      		<option value="seleccionar" selected="">Seleccionar cliente</option>
+	      	</select>
+	      	 <!-- d-none -->
+	      	<table class="table d-none" id="tabla_clientes">
+			  <thead>
+			    <tr>
+			      <th scope="col">ID</th>
+			      <th scope="col">Nombre</th>
+			      <th scope="col">Email</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr id="informacion_cliente">
+			      <!-- <td>awsfyugvptlqhiugtgl3</th>
+			      <td>Monica</td>
+			      <td>prueba123@gmail.com</td> -->
+			    </tr>
+			  </tbody>
+			</table>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+	        <button class="btn btn-primary" id="button-cliente-seleccionado">Seleccionar</button>	        
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+
+	<script type="text/javascript" src="js/script-tarjeta.js"></script>
+</body>
+</html>
