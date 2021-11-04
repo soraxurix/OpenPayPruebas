@@ -5,6 +5,7 @@ include("datos-conexion-openpay.php");
 // Agregamos el post para los json
 $_POST = json_decode(file_get_contents('php://input'), true);
 $name = $_POST["name"];
+$apellido = $_POST["apellido"];
 $email = $_POST["email"];
 // Añadimos la librearía php de OpenPay
 require (dirname(__FILE__) . '/openpay-php/Openpay.php');
@@ -14,6 +15,7 @@ try {
 
 	$customerData = array(
 	    'name' => $name,
+	    'last_name' => $apellido,
 	    'email' => $email
 	);
 
